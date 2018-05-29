@@ -28,7 +28,7 @@ export class WebHookRouter {
     res.send(req.param('hub.challenge'));
   }
 
-  public call(req: Request, res: Response, next: NextFunction) {
+  public call(req: Request | any, res: Response, next: NextFunction) {
     if (!req.isXHubValid()) {
       res.sendStatus(401);
       return;
