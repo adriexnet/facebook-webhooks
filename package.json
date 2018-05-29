@@ -1,0 +1,45 @@
+{
+  "name": "facebook-webhooks",
+  "version": "1.0.0",
+  "description": "example of facebook web hook",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "mocha src/**/*.spec.ts -r ts-node/register -r dotenv/config",
+    "lint": "tslint --fix -c tslint.json -p tsconfig.json && exit 0 || exit 1",
+    "build": "rm -rf dist && tsc && exit 0 || exit 1",
+    "postinstall": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "node -r dotenv/config dist/index.js",
+    "watch": "nodemon --watch src --watch .env --ext ts --exec 'npm run lint && npm run build && npm run dev'"
+  },
+  "repository": "https://github.com/adriexnet/facebook-webhooks",
+  "author": "Adriel Diaz Alfaro <adriexnet@gmail.com>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-api-error-handler": "^1.1.0",
+    "morgan": "^1.8.2",
+    "winston": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.11.1",
+    "@types/mocha": "^2.2.48",
+    "@types/morgan": "^1.7.32",
+    "@types/node": "^8.10.13",
+    "@types/uuid": "^3.4.3",
+    "@types/winston": "^2.3.9",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "dotenv": "^4.0.0",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.17.4",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.8.0",
+    "typescript": "^2.8.0"
+  }
+}
