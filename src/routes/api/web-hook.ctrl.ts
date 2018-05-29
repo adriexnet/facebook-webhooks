@@ -15,7 +15,7 @@ export class WebHookRouter {
   public call(req: Request, res: Response, next: NextFunction) {
     if (
       req.param('hub.mode') !== 'subscribe' ||
-      req.param('hub.verify_token') !== process.env.TOKEN
+      req.param('hub.verify_token') !== process.env.APP_TOKEN
     ) {
       res.sendStatus(400);
       return;
