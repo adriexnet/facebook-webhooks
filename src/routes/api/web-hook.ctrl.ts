@@ -9,13 +9,19 @@ export class WebHookRouter {
 
   public init(): void {
     this.router = Router();
-    this.router.post('/web-hooks', this.call);
+    this.router.get('/web-hooks', this.call);
   }
 
   public call(req: Request, res: Response, next: NextFunction) {
-    res.send({
-      details: [],
-    });
+    if (
+      req.param('hub.mode') !== 'subscribe' ||
+      req.param('hub.verify_token') !== process.env.TOKEN
+    ) {
+      res.sendStatus(400);
+      return;
+    }
+
+    res.send(req.param('hub.challenge'));
   }
 }
 

@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as bodyParser from 'body-parser';
+import * as  xhub from 'express-x-hub';
+
 import routes from './routes';
 import morgan from './middlewares/morgan';
 import { logger } from './libs';
@@ -16,6 +18,7 @@ export class App {
   }
 
   private middleware(): void {
+    this.express.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
     this.express.use(cors());
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
