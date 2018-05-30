@@ -39,7 +39,7 @@ export class WebHookRouter {
   }
 
   public status(req: Request, res: Response, next: NextFunction) {
-    res.send('<pre>' + JSON.stringify(status, null, 2) + '</pre>');
+    res.send('<pre>' + JSON.stringify(updates, null, 2) + '</pre>');
   }
 }
 
